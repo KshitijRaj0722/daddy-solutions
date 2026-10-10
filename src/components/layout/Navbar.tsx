@@ -50,7 +50,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Button href="#contact" size="sm" className="hidden sm:inline-flex">
-            Talk to Daddy
+            Talk to us
             <Icon name="arrowRight" size={16} className="transition-transform group-hover:translate-x-0.5" />
           </Button>
 
@@ -87,7 +87,7 @@ export function Navbar() {
           ))}
           <li className="pt-4 pb-2">
             <Button href="#contact" size="md" className="w-full" onClick={() => setOpen(false)}>
-              Talk to Daddy
+              Talk to us
             </Button>
           </li>
         </ul>

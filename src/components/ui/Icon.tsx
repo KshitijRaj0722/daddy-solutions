@@ -105,6 +105,14 @@ const paths = {
       <circle cx="14.5" cy="7.5" r="1" />
     </>
   ),
+  workflow: (
+    <>
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      <path d="M10 6.5h4.5a2.5 2.5 0 0 1 2.5 2.5v5" />
+      <path d="m15 12 2 2 2-2" />
+    </>
+  ),
 } as const;
 
 export type IconName = keyof typeof paths;

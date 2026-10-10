@@ -43,6 +43,8 @@ export const metadata: Metadata = {
     "Solana development",
     "Web3 development",
     "custom software",
+    "business process automation",
+    "internal tools development",
   ],
   applicationName: site.name,
   authors: [{ name: site.name, url: siteUrl }],
@@ -85,7 +87,6 @@ const jsonLd = {
   description: site.description,
   foundingDate: site.founded,
   email: site.contact.email,
-  telephone: site.contact.phone,
   areaServed: "Worldwide",
   knowsAbout: [
     "Full-stack web development",
@@ -94,6 +95,7 @@ const jsonLd = {
     "Cloud deployment and DevOps",
     "Solana and Web3 development",
     "Software maintenance and support",
+    "Business automation and internal tools",
   ],
   makesOffer: [
     "Full-stack development",
@@ -104,6 +106,7 @@ const jsonLd = {
     "Solana and Web3 development",
     "Maintenance and support",
     "Custom software",
+    "Automation and internal tools",
   ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
 };
 

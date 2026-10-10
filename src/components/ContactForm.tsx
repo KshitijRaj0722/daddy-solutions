@@ -13,15 +13,16 @@ const projectTypes = [
   "Frontend build",
   "Solana / Web3",
   "Cloud & DevOps",
+  "Automation & internal tools",
   "Maintenance & support",
   "Still figuring it out",
 ];
 
 const budgets = [
-  "Under $10k",
-  "$10k – $30k",
-  "$30k – $75k",
-  "$75k+",
+  "Under ₹10k",
+  "₹10k – ₹30k",
+  "₹30k – ₹75k",
+  "₹75k+",
   "Retainer / ongoing",
 ];
 
@@ -96,7 +97,7 @@ export function ContactForm() {
         setStatus("error");
         setError(
           data.error ??
-            "That didn't send. Try again, or email hello@daddysolutions.dev.",
+            "That didn't send. Try again, or email daddysolutions404@gmail.com.",
         );
         return;
       }
@@ -206,7 +207,7 @@ export function ContactForm() {
 
         <div className="sm:col-span-2">
           <label htmlFor="message" className={labelClass}>
-            Tell Daddy what you need
+            Tell us what you need
           </label>
           <textarea
             id="message"

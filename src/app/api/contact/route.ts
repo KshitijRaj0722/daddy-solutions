@@ -33,7 +33,14 @@ function rateLimited(ip: string): boolean {
   return entry.count > MAX_PER_WINDOW;
 }
 
-const isEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
+const isEmail =(value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
 
 export async function POST(request: Request) {
   const ip =
@@ -87,9 +94,63 @@ export async function POST(request: Request) {
     source: ip,
   };
 
-  // Wire this up to your provider of choice (Resend, Postmark, Slack, CRM…).
-  // Keeping it a log means the form works out of the box in local dev.
-  console.info("[contact] new brief", brief);
+  const apiKey = process.env.RESEND_API_KEY;
+  const inbox = process.env.CONTACT_INBOX;
+
+  if (!apiKey || !inbox) {
+    // Local dev without credentials: keep the form working by logging the brief.
+    console.info("[contact] RESEND_API_KEY / CONTACT_INBOX not set — logging only", brief);
+    if (process.env.NODE_ENV === "production") {
+      return NextResponse.json(
+        { ok: false, error: "We couldn't send that right now. Please email us directly." },
+        { status: 500 },
+      );
+    }
+    return NextResponse.json({ ok: true });
+  }
+
+  const rows: [string, string][] = [
+    ["Name", brief.name],
+    ["Email", brief.email],
+    ["Needs", brief.projectType],
+    ["Budget", brief.budget],
+    ["Received", brief.receivedAt],
+  ];
+
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: process.env.CONTACT_FROM || "Daddy Solutions <onboarding@resend.dev>",
+        to: [inbox],
+        reply_to: brief.email,
+        subject: `New brief from ${brief.name} — ${brief.projectType}`,
+        text: [
+          ...rows.map(([label, value]) => `${label}: ${value}`),
+          "",
+          brief.message,
+        ].join("\n"),
+        html:
+          `<table>${rows
+            .map(([label, value]) => `<tr><td><b>${label}</b></td><td>${escapeHtml(value)}</td></tr>`)
+            .join("")}</table>` + `<p style="white-space:pre-wrap">${escapeHtml(brief.message)}</p>`,
+      }),
+    });
+
+    if (!res.ok) {
+      console.error("[contact] Resend rejected the brief", res.status, await res.text());
+      throw new Error("resend failed");
+    }
+  } catch {
+    return NextResponse.json(
+      { ok: false, error: "We couldn't send that right now. Please email us directly." },
+      { status: 502 },
+    );
+  }
 
   return NextResponse.json({ ok: true });
 }

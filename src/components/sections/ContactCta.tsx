@@ -55,10 +55,6 @@ export function ContactCta() {
                 <a href={`mailto:${site.contact.email}`} className="block text-brass hover:underline">
                   {site.contact.email}
                 </a>
-                <a href={`tel:${site.contact.phone.replace(/[^+\d]/g, "")}`} className="block text-bone-dim hover:text-bone">
-                  {site.contact.phone}
-                </a>
-                <p className="text-mute">{site.contact.hours}</p>
               </div>
             </Reveal>
           </div>

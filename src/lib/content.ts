@@ -101,11 +101,23 @@ export const services: Service[] = [
     blurb:
       "The thing that doesn't exist yet, because nobody has built it for your business.",
     bullets: [
-      "Automation & integrations",
+      "Third-party integrations",
       "Data pipelines",
       "AI features that ship",
     ],
     icon: "sparkle",
+  },
+  {
+    id: "automation",
+    title: "Automation & internal tools",
+    blurb:
+      "The spreadsheets, copy-paste routines and manual hand-offs your team is tired of — replaced with software that just runs.",
+    bullets: [
+      "Workflow automation",
+      "Admin panels & back-office tools",
+      "Reporting & ops dashboards",
+    ],
+    icon: "workflow",
   },
   {
     id: "marketing",
@@ -255,6 +267,19 @@ export const stackGroups = [
       "Terraform",
       "GitHub Actions",
       "Grafana",
+    ],
+  },
+  {
+    label: "Automation",
+    note: "Workflows & internal tools",
+    items: [
+      "n8n",
+      "Temporal",
+      "BullMQ",
+      "Retool",
+      "Zapier",
+      "Playwright",
+      "Metabase",
     ],
   },
   {

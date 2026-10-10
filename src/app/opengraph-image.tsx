@@ -66,6 +66,8 @@ export default function OpengraphImage() {
           <span>·</span>
           <span>Cloud & DevOps</span>
           <span>·</span>
+          <span>Automation</span>
+          <span>·</span>
           <span>Solana / Web3</span>
         </div>
       </div>

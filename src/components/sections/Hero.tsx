@@ -39,8 +39,8 @@ export function Hero() {
 
           <Reveal delay={160}>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-mute sm:text-xl">
-              End-to-end software development — web apps, APIs, databases, cloud
-              and Solana. One senior team takes it from a sketch on a call to a
+              End-to-end software development — web apps, APIs, databases, cloud,
+              automation and Solana. One senior team takes it from a sketch on a call to a
               product in production, then keeps it running.
             </p>
           </Reveal>
@@ -48,7 +48,7 @@ export function Hero() {
           <Reveal delay={220}>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Button href="#contact" size="lg">
-                Talk to Daddy
+                Talk to us
                 <Icon
                   name="arrowRight"
                   size={18}

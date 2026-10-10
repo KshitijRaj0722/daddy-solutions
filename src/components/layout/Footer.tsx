@@ -22,16 +22,6 @@ export function Footer() {
               End-to-end software development, cloud and Solana engineering. You
               bring the idea — we build, ship and maintain the thing.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {site.locations.map((location) => (
-                <span
-                  key={location}
-                  className="hairline rounded-full px-3 py-1 font-mono text-[0.68rem] text-mute"
-                >
-                  {location}
-                </span>
-              ))}
-            </div>
           </div>
 
           <nav aria-label="Services">
@@ -83,32 +73,6 @@ export function Footer() {
                   {site.contact.email}
                 </a>
               </li>
-              <li>
-                <a
-                  href={`mailto:${site.contact.sales}`}
-                  className="text-mute hover:text-bone"
-                >
-                  {site.contact.sales}
-                </a>
-              </li>
-              <li className="text-mute">{site.contact.phone}</li>
-              <li className="text-mute">{site.contact.hours}</li>
-            </ul>
-
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {site.socials.map((social) => (
-                <li key={social.label}>
-                  <a
-                    href={social.href}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    aria-label={`${site.name} on ${social.label}`}
-                    className="hairline inline-flex rounded-full px-3 py-1.5 font-mono text-[0.7rem] text-bone-dim transition-colors hover:border-brass/40 hover:text-brass"
-                  >
-                    {social.label}
-                  </a>
-                </li>
-              ))}
             </ul>
           </div>
         </div>

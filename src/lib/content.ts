@@ -7,6 +7,8 @@ export type Service = {
   bullets: string[];
   icon: IconName;
   featured?: boolean;
+  /** Tucked behind "More services" so the grid stays scannable. */
+  more?: boolean;
   /** Offered to select clients only; may be retired. Rendered with a "Limited" flag. */
   temporary?: boolean;
 };
@@ -39,6 +41,18 @@ export const services: Service[] = [
     icon: "server",
   },
   {
+    id: "automation",
+    title: "Automation & internal tools",
+    blurb:
+      "The spreadsheets, copy-paste routines and manual hand-offs your team is tired of — replaced with software that just runs.",
+    bullets: [
+      "Workflow automation",
+      "Admin panels & back-office tools",
+      "Reporting & ops dashboards",
+    ],
+    icon: "workflow",
+  },
+  {
     id: "frontend",
     title: "Frontend engineering",
     blurb: "Interfaces that load fast, feel expensive, and actually convert.",
@@ -48,6 +62,7 @@ export const services: Service[] = [
       "Accessibility & Core Web Vitals",
     ],
     icon: "window",
+    more: true,
   },
   {
     id: "database",
@@ -59,6 +74,7 @@ export const services: Service[] = [
       "Indexing & query tuning",
     ],
     icon: "database",
+    more: true,
   },
   {
     id: "devops",
@@ -94,6 +110,7 @@ export const services: Service[] = [
       "Uptime and incident response",
     ],
     icon: "lifebuoy",
+    more: true,
   },
   {
     id: "custom",
@@ -106,18 +123,7 @@ export const services: Service[] = [
       "AI features that ship",
     ],
     icon: "sparkle",
-  },
-  {
-    id: "automation",
-    title: "Automation & internal tools",
-    blurb:
-      "The spreadsheets, copy-paste routines and manual hand-offs your team is tired of — replaced with software that just runs.",
-    bullets: [
-      "Workflow automation",
-      "Admin panels & back-office tools",
-      "Reporting & ops dashboards",
-    ],
-    icon: "workflow",
+    more: true,
   },
   {
     id: "marketing",

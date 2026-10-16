@@ -7,6 +7,7 @@ const facts = [
   { label: "Reply time", value: "< 1 business day" },
   { label: "First demo", value: "~9 days from kickoff" },
   { label: "Minimum engagement", value: "2 weeks" },
+  { label: "Pricing", value: "Fixed quote after a short call" },
 ];
 
 export function ContactCta() {

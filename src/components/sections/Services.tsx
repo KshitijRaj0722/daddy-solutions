@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
@@ -70,7 +73,12 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
   );
 }
 
+const primaryServices = services.filter((s) => !s.more && !s.temporary);
+const moreServices = services.filter((s) => s.more || s.temporary);
+
 export function Services() {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <Section id="services">
       <Container>
@@ -87,16 +95,44 @@ export function Services() {
         />
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => (
+          {primaryServices.map((service, i) => (
             <ServiceCard key={service.id} service={service} delay={i * 60} />
           ))}
         </div>
 
-        <p className="mt-6 font-mono text-xs text-mute">
-          <span className="text-bone-dim">Limited</span> = offered to select
-          clients and may be retired. Ask if you need one — our core software
-          work isn&rsquo;t going anywhere.
-        </p>
+        <div
+          id="more-services"
+          className={cn(
+            "mt-4 gap-4 sm:grid-cols-2 lg:grid-cols-3",
+            showMore ? "grid" : "hidden",
+          )}
+        >
+          {moreServices.map((service, i) => (
+            <ServiceCard key={service.id} service={service} delay={i * 60} />
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <button
+            type="button"
+            onClick={() => setShowMore((v) => !v)}
+            aria-expanded={showMore}
+            aria-controls="more-services"
+            className="hairline rounded-full bg-ink-900/60 px-5 py-2.5 font-mono text-xs tracking-wide text-bone-dim transition-colors hover:border-brass/40 hover:text-brass"
+          >
+            {showMore
+              ? "Show fewer services"
+              : `More services (${moreServices.length})`}
+          </button>
+
+          {showMore && (
+            <p className="font-mono text-xs text-mute">
+              <span className="text-bone-dim">Limited</span> = offered to select
+              clients and may be retired. Ask if you need one — our core
+              software work isn&rsquo;t going anywhere.
+            </p>
+          )}
+        </div>
       </Container>
     </Section>
   );

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 import { Navbar } from "@/components/layout/Navbar";
+import { StickyCta } from "@/components/layout/StickyCta";
 import { Footer } from "@/components/layout/Footer";
 import { site, siteUrl } from "@/lib/site";
 import "./globals.css";
@@ -126,6 +127,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </a>
         <Navbar />
         <main id="main">{children}</main>
+        <StickyCta />
         <Footer />
         <script
           type="application/ld+json"

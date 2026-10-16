@@ -39,9 +39,10 @@ export function Hero() {
 
           <Reveal delay={160}>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-mute sm:text-xl">
-              End-to-end software development — web apps, APIs, databases, cloud,
-              automation and Solana. One senior team takes it from a sketch on a call to a
-              product in production, then keeps it running.
+              We build web apps, automation and internal tools for growing
+              businesses — plus APIs, cloud and Solana. One senior team takes it
+              from a sketch on a call to a product in production, then keeps it
+              running.
             </p>
           </Reveal>
 

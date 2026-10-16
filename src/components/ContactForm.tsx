@@ -19,6 +19,7 @@ const projectTypes = [
 ];
 
 const budgets = [
+  "Not sure yet",
   "Under ₹10k",
   "₹10k – ₹30k",
   "₹30k – ₹75k",
@@ -120,9 +121,21 @@ export function ContactForm() {
           Brief received.
         </h3>
         <p className="mt-3 max-w-sm text-[0.97rem] leading-relaxed text-mute">
-          A senior engineer reads it today and replies within one business day —
-          with questions, a rough shape, and an honest timeline.
+          Thanks — it&rsquo;s in. A senior engineer reads it today and replies
+          within one business day.
         </p>
+        <ol className="mt-7 w-full max-w-sm space-y-3 text-left">
+          {[
+            "We read your brief and reply by email with questions and a rough shape.",
+            "A short call to agree scope, timeline and a fixed quote.",
+            "Kickoff — and a working demo on a real URL in about 9 days.",
+          ].map((step, i) => (
+            <li key={step} className="flex gap-3 text-sm text-bone-dim">
+              <span className="font-mono text-brass">0{i + 1}</span>
+              {step}
+            </li>
+          ))}
+        </ol>
         <button
           type="button"
           onClick={() => setStatus("idle")}
@@ -189,12 +202,15 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="budget" className={labelClass}>
-            Budget range
+            Budget range{" "}
+            <span className="tracking-normal text-mute/60 normal-case">
+              (optional)
+            </span>
           </label>
           <select
             id="budget"
             name="budget"
-            defaultValue={budgets[1]}
+            defaultValue={budgets[0]}
             className={fieldClass}
           >
             {budgets.map((budget) => (
